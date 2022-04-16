@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BF473B5E280A78230099ED59 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF473B5D280A78230099ED59 /* UIView+.swift */; };
 		BF473B60280A869F0099ED59 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF473B5F280A869F0099ED59 /* SearchResultTableViewCell.swift */; };
+		BF473B62280B73700099ED59 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF473B61280B73700099ED59 /* SearchResponse.swift */; };
 		BF51D342280A235F00D70000 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51D341280A235F00D70000 /* APIManager.swift */; };
 		BF51D344280A23A400D70000 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51D343280A23A400D70000 /* PersistenceManager.swift */; };
 		BF51D346280A23DD00D70000 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51D345280A23DD00D70000 /* HapticsManager.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		BF473B5D280A78230099ED59 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		BF473B5F280A869F0099ED59 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		BF473B61280B73700099ED59 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		BF51D341280A235F00D70000 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BF51D343280A23A400D70000 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		BF51D345280A23DD00D70000 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		BFCCA8A42809437D004D2CE1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BF473B61280B73700099ED59 /* SearchResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				BF473B5E280A78230099ED59 /* UIView+.swift in Sources */,
 				BF51D344280A23A400D70000 /* PersistenceManager.swift in Sources */,
 				BFCCA8AA28094468004D2CE1 /* WatchListViewController.swift in Sources */,
+				BF473B62280B73700099ED59 /* SearchResponse.swift in Sources */,
 				BFCCA893280942D3004D2CE1 /* SceneDelegate.swift in Sources */,
 				BFCCA8AE280944EE004D2CE1 /* SearchResultsViewController.swift in Sources */,
 				BF51D342280A235F00D70000 /* APIManager.swift in Sources */,

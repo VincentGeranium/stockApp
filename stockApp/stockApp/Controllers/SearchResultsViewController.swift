@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 protocol SearchResultsViewControllerDelegate: AnyObject {
-    func SearchResultsViewControllerDidSelect(searchResult: String)
+    func SearchResultsViewControllerDidSelect(searchResult: SearchResult)
 }
 
 class SearchResultsViewController: UIViewController {
-    private var results: [String] = []
+    private var results: [SearchResult] = []
     
     weak var delegate: SearchResultsViewControllerDelegate?
     
@@ -24,6 +24,8 @@ class SearchResultsViewController: UIViewController {
             SearchResultTableViewCell.self,
             forCellReuseIdentifier: SearchResultTableViewCell.identifier
         )
+        
+        tableView.isHidden = true
         
         return tableView
     }()
@@ -40,8 +42,9 @@ class SearchResultsViewController: UIViewController {
     }
     
     // MARK: - Public
-    public func update(with results: [String]) {
+    public func update(with results: [SearchResult]) {
         self.results = results
+        tableView.isHidden = results.isEmpty
         tableView.reloadData()
     }
 }
@@ -58,24 +61,26 @@ extension SearchResultsViewController {
 // MARK: - TableViewDelegate and DataSource extension
 extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultTableViewCell.identifier, for: indexPath) as? SearchResultTableViewCell else { return UITableViewCell() }
         
+        let model = results[indexPath.row]
+        
         if #available(iOS 14.0, *) {
             var cellConfiguration = cell.defaultContentConfiguration()
             
-            cellConfiguration.text = "APPL"
-            cellConfiguration.secondaryText = "APPLE.inc"
+            cellConfiguration.text = model.displaySymbol
+            cellConfiguration.secondaryText = model.description
             
             cell.contentConfiguration = cellConfiguration
             
         } else {
             // Fallback on earlier versions
-            cell.textLabel?.text = "APPL"
-            cell.detailTextLabel?.text = "APPLE.inc"
+            cell.textLabel?.text = model.displaySymbol
+            cell.detailTextLabel?.text = model.description
         }
         
         return cell
@@ -83,6 +88,9 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        delegate?.SearchResultsViewControllerDidSelect(searchResult: "APPL")
+        
+        let model = results[indexPath.row]
+        
+        delegate?.SearchResultsViewControllerDidSelect(searchResult: model)
     }
 }

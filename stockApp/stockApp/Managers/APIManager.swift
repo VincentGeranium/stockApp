@@ -13,6 +13,13 @@ final class APIManager {
     private init() {}
     
     // MARK: - Public
+    public func search(query: String, completion: @escaping (Result<SearchResponse, Error>) -> Void) {
+        guard let safeQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        
+        guard let url = url(for: .search, queryParams: ["q":safeQuery]) else { return }
+        request(url: url, expecting: SearchResponse.self, completion: completion)
+        
+    }
     
     // get stock info
     
@@ -22,13 +29,13 @@ final class APIManager {
 // MARK: - Private
 private extension APIManager {
     private struct Constants {
-        static let apiKey = ""
-        static let sandboxApiKey = ""
-        static let baseURL = ""
+        static let apiKey = "c9d9u2iad3iboaghgvpg"
+        static let sandboxApiKey = "sandbox_c9d9u2iad3iboaghgvq0"
+        static let baseURL = "https://finnhub.io/api/v1"
     }
     
     private enum EndPoint: String {
-        case search
+        case search = "/search"
     }
     
     private enum APIError: Error {
@@ -37,7 +44,25 @@ private extension APIManager {
     }
     
     private func url(for endPoint: EndPoint, queryParams: [String: String] = [:]) -> URL? {
-        return nil
+        var urlString = Constants.baseURL + endPoint.rawValue
+        
+        var queryItems = [URLQueryItem]()
+        // Add any parameters
+        for (name, value) in queryParams {
+            queryItems.append(.init(name: name, value: value))
+        }
+        
+        // Add token
+        queryItems.append(.init(name: "token", value: Constants.apiKey))
+        
+        // Convert query items to suffix string
+        let queryString = queryItems.map { "\($0.name)=\($0.value ?? "")" }.joined(separator: "&")
+        
+        urlString += "?" + queryString
+        
+        print("\n\(urlString)\n")
+        
+        return URL(string: urlString)
     }
     
     private func request<T: Codable>(url: URL?, expecting: T.Type, completion: @escaping (Result<T, Error>) -> Void) {

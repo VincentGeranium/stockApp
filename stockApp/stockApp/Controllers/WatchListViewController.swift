@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class WatchListViewController: UIViewController {
+    private var searchTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,26 +66,45 @@ extension WatchListViewController {
 // MARK: - extension UISearchResultsUpdating
 extension WatchListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        
         guard let query = searchController.searchBar.text,
               let resultVC = searchController.searchResultsController as? SearchResultsViewController,
               !query.trimmingCharacters(in: .whitespaces).isEmpty else {
             return
         }
         
+        
+        // reset timer
+        searchTimer?.invalidate()
+        
+        // kick off new timer
         // Optimize to reduce number of searches for when user stops typing
-        
-        // Call API to Search
-        
+        searchTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
+            // Call API to Search
+            APIManager.shared.search(query: query) { result in
+                switch result {
+                case .success(let response):
+                    DispatchQueue.main.async {
+                        resultVC.update(with: response.result)
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        resultVC.update(with: [])
+                    }
+                    print(error)
+                }
+            }
+        })
+
         // Update result controllers
-        resultVC.update(with: ["GOOG"])
+        
     }
 }
 
 // MARK: - extension SearchResultsViewControllerDelegate
 extension WatchListViewController: SearchResultsViewControllerDelegate {
-    func SearchResultsViewControllerDidSelect(searchResult: String) {
+    func SearchResultsViewControllerDidSelect(searchResult: SearchResult) {
         // Present stock details for given selection
+        print("did select: \(searchResult.displaySymbol)")
     }
-    
-    
 }
