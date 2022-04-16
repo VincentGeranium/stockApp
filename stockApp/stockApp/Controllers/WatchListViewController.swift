@@ -14,11 +14,43 @@ class WatchListViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         setupSearchController()
+        setupTitleView()
     }
 }
 
 // MARK: - Private
 extension WatchListViewController {
+    private func setupTitleView() {
+        let titleView = UIView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: view.width,
+                height: navigationController?.navigationBar.height ?? 100
+            )
+        )
+        
+        let titleLabel: UILabel = {
+            let label: UILabel = UILabel(
+                frame: CGRect(
+                    x: 10,
+                    y: 0,
+                    width: titleView.width-20,
+                    height: titleView.height
+                )
+            )
+            
+            label.text = "Stocks"
+            label.font = .systemFont(ofSize: 40.0, weight: .medium)
+            
+            return label
+        }()
+
+        titleView.addSubview(titleLabel)
+        
+        navigationItem.titleView = titleView
+    }
+    
     private func setupSearchController() {
         let searchResultsController = SearchResultsViewController()
         let searchController = UISearchController(searchResultsController: searchResultsController)
