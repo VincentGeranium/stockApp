@@ -7,20 +7,34 @@
 
 import Foundation
 import UIKit
+import FloatingPanel
 
 class WatchListViewController: UIViewController {
     private var searchTimer: Timer?
+    
+    private var panel: FloatingPanelController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         setupSearchController()
         setupTitleView()
+        setupFloatingPanel()
     }
 }
 
 // MARK: - Private
 extension WatchListViewController {
+    private func setupFloatingPanel() {
+        let vc = NewsViewController(controllerType: .topStories)
+        let panel = FloatingPanelController()
+        panel.surfaceView.backgroundColor = .secondarySystemBackground
+        panel.set(contentViewController: vc)
+        panel.addPanel(toParent: self)
+        panel.delegate = self
+        panel.track(scrollView: vc.tableView)
+    }
+    
     private func setupTitleView() {
         let titleView = UIView(
             frame: CGRect(
@@ -110,5 +124,16 @@ extension WatchListViewController: SearchResultsViewControllerDelegate {
         let naviVC = UINavigationController(rootViewController: vc)
         vc.title = searchResult.description
         present(naviVC, animated: true)
+    }
+}
+
+// MARK: - extension FloatingPanelControllerDelegate
+extension WatchListViewController: FloatingPanelControllerDelegate {
+    func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
+        if fpc.state == .full {
+            navigationItem.titleView?.isHidden = true
+        } else if fpc.state != .full {
+            navigationItem.titleView?.isHidden = false
+        }
     }
 }
