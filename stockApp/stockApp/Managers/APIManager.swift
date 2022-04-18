@@ -21,9 +21,30 @@ final class APIManager {
         
     }
     
-    // get stock info
-    
-    // search stock
+    public func news(for type: NewsViewController.ControllerType, completion: @escaping (Result<[NewsStroy], Error>) -> Void) {
+        switch type {
+        case .topStories:
+            let url = url(
+                for: .topStories,
+                queryParams: ["category":"general"]
+            )
+            request(url: url, expecting: [NewsStroy].self, completion: completion)
+            
+        case .company(let symbol):
+            let today = Date()
+            let oneMonthBack = today.addingTimeInterval(-(Constants.day * 7))
+            
+            let url = url(
+                for: .companyNews,
+                queryParams: [
+                    "symbol": symbol,
+                    "from": DateFormatter.newsDateFormatter.string(from: oneMonthBack),
+                    "to": DateFormatter.newsDateFormatter.string(from: today)
+                ]
+            )
+            request(url: url, expecting: [NewsStroy].self, completion: completion)
+        }
+    }
 }
 
 // MARK: - Private
@@ -32,10 +53,13 @@ private extension APIManager {
         static let apiKey = "c9d9u2iad3iboaghgvpg"
         static let sandboxApiKey = "sandbox_c9d9u2iad3iboaghgvq0"
         static let baseURL = "https://finnhub.io/api/v1"
+        static let day: TimeInterval = 3600 * 24
     }
     
     private enum EndPoint: String {
         case search = "/search"
+        case topStories = "/news"
+        case companyNews = "/company-news"
     }
     
     private enum APIError: Error {

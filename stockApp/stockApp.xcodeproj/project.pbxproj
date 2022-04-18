@@ -14,6 +14,8 @@
 		BF51D344280A23A400D70000 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51D343280A23A400D70000 /* PersistenceManager.swift */; };
 		BF51D346280A23DD00D70000 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51D345280A23DD00D70000 /* HapticsManager.swift */; };
 		BF8E6892280D2753005938E1 /* NewsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E6891280D2753005938E1 /* NewsHeaderView.swift */; };
+		BFA7D084280D33CB000EE185 /* NewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA7D083280D33CB000EE185 /* NewsStory.swift */; };
+		BFA7D086280D3724000EE185 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA7D085280D3724000EE185 /* DateFormatter+.swift */; };
 		BFCCA891280942D3004D2CE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCCA890280942D2004D2CE1 /* AppDelegate.swift */; };
 		BFCCA893280942D3004D2CE1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCCA892280942D3004D2CE1 /* SceneDelegate.swift */; };
 		BFCCA89A280942D4004D2CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCCA899280942D4004D2CE1 /* Assets.xcassets */; };
@@ -35,6 +37,8 @@
 		BF51D343280A23A400D70000 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		BF51D345280A23DD00D70000 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		BF8E6891280D2753005938E1 /* NewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderView.swift; sourceTree = "<group>"; };
+		BFA7D083280D33CB000EE185 /* NewsStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStory.swift; sourceTree = "<group>"; };
+		BFA7D085280D3724000EE185 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
 		BFCCA88D280942D2004D2CE1 /* stockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCCA890280942D2004D2CE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFCCA892280942D3004D2CE1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				BF473B61280B73700099ED59 /* SearchResponse.swift */,
+				BFA7D083280D33CB000EE185 /* NewsStory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 				BFCCA892280942D3004D2CE1 /* SceneDelegate.swift */,
 				BFCCA899280942D4004D2CE1 /* Assets.xcassets */,
 				BF473B5D280A78230099ED59 /* UIView+.swift */,
+				BFA7D085280D3724000EE185 /* DateFormatter+.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -278,8 +284,10 @@
 				BFCCA891280942D3004D2CE1 /* AppDelegate.swift in Sources */,
 				BFCCA8AC280944BC004D2CE1 /* NewsViewController.swift in Sources */,
 				BF473B5E280A78230099ED59 /* UIView+.swift in Sources */,
+				BFA7D084280D33CB000EE185 /* NewsStory.swift in Sources */,
 				BF51D344280A23A400D70000 /* PersistenceManager.swift in Sources */,
 				BFCCA8AA28094468004D2CE1 /* WatchListViewController.swift in Sources */,
+				BFA7D086280D3724000EE185 /* DateFormatter+.swift in Sources */,
 				BF473B62280B73700099ED59 /* SearchResponse.swift in Sources */,
 				BF8E6892280D2753005938E1 /* NewsHeaderView.swift in Sources */,
 				BFCCA893280942D3004D2CE1 /* SceneDelegate.swift in Sources */,

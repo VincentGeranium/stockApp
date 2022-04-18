@@ -38,6 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // MARK: - Private
 private extension AppDelegate {
     private func debug() {
-        
+        APIManager.shared.news(for: .company(symbol: "MSFT")) { result in
+            switch result {
+            case .success(let news):
+                print(news.count)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
