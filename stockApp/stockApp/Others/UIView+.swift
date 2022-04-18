@@ -7,7 +7,16 @@
 
 import Foundation
 import UIKit
+// MARK: - Adding Sub views
+extension UIView {
+    func addSubViews(views: UIView...) {
+        views.forEach {
+            addSubview($0)
+        }
+    }
+}
 
+// MARK: - Framing
 extension UIView {
     var width: CGFloat {
         return frame.size.width

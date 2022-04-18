@@ -25,16 +25,21 @@ class NewsViewController: UIViewController {
             }
         }
     }
+    // MARK: - Properties
+    // dedicated for model
+    private var stories: [String] = []
     
     private let controllerType: ControllerType
     
     let tableView: UITableView = {
         let tableView: UITableView = UITableView()
         // Register cell, Header View
+        tableView.register(NewsHeaderView.self, forHeaderFooterViewReuseIdentifier: NewsHeaderView.identifier)
         tableView.backgroundColor = .clear
         return tableView
     }()
     
+    // MARK: - init
     init(controllerType: ControllerType) {
         self.controllerType = controllerType
         super.init(nibName: nil, bundle: nil)
@@ -44,6 +49,7 @@ class NewsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -89,11 +95,15 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return nil
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: NewsHeaderView.identifier) as? NewsHeaderView else { return UIView() }
+        
+        headerView.configure(with: .init(title: self.controllerType.title, shouldShowAddButton: false))
+        
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 70
+        return NewsHeaderView.preferredHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

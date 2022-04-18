@@ -13,6 +13,7 @@
 		BF51D342280A235F00D70000 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51D341280A235F00D70000 /* APIManager.swift */; };
 		BF51D344280A23A400D70000 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51D343280A23A400D70000 /* PersistenceManager.swift */; };
 		BF51D346280A23DD00D70000 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51D345280A23DD00D70000 /* HapticsManager.swift */; };
+		BF8E6892280D2753005938E1 /* NewsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E6891280D2753005938E1 /* NewsHeaderView.swift */; };
 		BFCCA891280942D3004D2CE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCCA890280942D2004D2CE1 /* AppDelegate.swift */; };
 		BFCCA893280942D3004D2CE1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCCA892280942D3004D2CE1 /* SceneDelegate.swift */; };
 		BFCCA89A280942D4004D2CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCCA899280942D4004D2CE1 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		BF51D341280A235F00D70000 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BF51D343280A23A400D70000 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		BF51D345280A23DD00D70000 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		BF8E6891280D2753005938E1 /* NewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderView.swift; sourceTree = "<group>"; };
 		BFCCA88D280942D2004D2CE1 /* stockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCCA890280942D2004D2CE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFCCA892280942D3004D2CE1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				BFCCA89B280942D4004D2CE1 /* LaunchScreen.storyboard */,
 				BF473B5F280A869F0099ED59 /* SearchResultTableViewCell.swift */,
+				BF8E6891280D2753005938E1 /* NewsHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				BF51D344280A23A400D70000 /* PersistenceManager.swift in Sources */,
 				BFCCA8AA28094468004D2CE1 /* WatchListViewController.swift in Sources */,
 				BF473B62280B73700099ED59 /* SearchResponse.swift in Sources */,
+				BF8E6892280D2753005938E1 /* NewsHeaderView.swift in Sources */,
 				BFCCA893280942D3004D2CE1 /* SceneDelegate.swift in Sources */,
 				BFCCA8AE280944EE004D2CE1 /* SearchResultsViewController.swift in Sources */,
 				BF51D342280A235F00D70000 /* APIManager.swift in Sources */,
