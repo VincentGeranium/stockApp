@@ -14,4 +14,10 @@ extension DateFormatter {
         formatter.dateFormat = "YYYY-MM-dd"
         return formatter
     }()
+    
+    static let prettyDateFormatter: DateFormatter = {
+        let formatter: DateFormatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
+    }()
 }

@@ -27,13 +27,26 @@ class NewsViewController: UIViewController {
     }
     // MARK: - Properties
     // dedicated for model
-    private var stories: [String] = []
+    private var stories: [NewsStroy] = [
+        NewsStroy(
+            category: "tech",
+            datetime: 123,
+            headline: "headline",
+            id: 0,
+            image: "",
+            related: "related",
+            source: "APPL",
+            summary: "summary",
+            url: ""
+        )
+    ]
     
     private let controllerType: ControllerType
     
     let tableView: UITableView = {
         let tableView: UITableView = UITableView()
         // Register cell, Header View
+        tableView.register(NewsStoryTableViewCell.self, forCellReuseIdentifier: NewsStoryTableViewCell.identifier)
         tableView.register(NewsHeaderView.self, forHeaderFooterViewReuseIdentifier: NewsHeaderView.identifier)
         tableView.backgroundColor = .clear
         return tableView
@@ -83,15 +96,19 @@ private extension NewsViewController {
 // MARK: - extension UITableViewDelegate, UITableViewDataSource
 extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return stories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsStoryTableViewCell.identifier, for: indexPath) as? NewsStoryTableViewCell else { fatalError() }
+        
+        cell.configure(viewModel: .init(model: stories[indexPath.row]))
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        return NewsStoryTableViewCell.preferredHeight
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
