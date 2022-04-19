@@ -10,6 +10,18 @@ import UIKit
 import FloatingPanel
 
 class WatchListViewController: UIViewController {
+    // Model objcet
+    private var watchList: [String: [String]] = [:]
+    
+    // ViewModel
+    private var viewModels: [String] = []
+    
+    private let tableView: UITableView = {
+        let tableView: UITableView = UITableView()
+        
+        return tableView
+    }()
+    
     private var searchTimer: Timer?
     
     private var panel: FloatingPanelController?
@@ -18,6 +30,8 @@ class WatchListViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         setupSearchController()
+        setupTableView()
+        setupWatchListData()
         setupTitleView()
         setupFloatingPanel()
     }
@@ -25,6 +39,24 @@ class WatchListViewController: UIViewController {
 
 // MARK: - Private
 extension WatchListViewController {
+    private func setupWatchListData() {
+        // Array of symbols
+        let symbolDatas = PersistenceManager.shared.watchList
+        
+        for symbol in symbolDatas {
+            // Fetch Market Data per symbol
+            watchList[symbol] = ["some string"]
+        }
+        
+        tableView.reloadData()
+    }
+    
+    private func setupTableView() {
+        view.addSubViews(views: tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
     private func setupFloatingPanel() {
         let vc = NewsViewController(controllerType: .topStories)
         let panel = FloatingPanelController()
@@ -135,5 +167,21 @@ extension WatchListViewController: FloatingPanelControllerDelegate {
         } else if fpc.state != .full {
             navigationItem.titleView?.isHidden = false
         }
+    }
+}
+
+// MARK: - extension UITableViewDelegate, UITableViewDataSource
+extension WatchListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return watchList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        // Open details for selection
     }
 }
