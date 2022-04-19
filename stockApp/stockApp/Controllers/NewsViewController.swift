@@ -27,19 +27,7 @@ class NewsViewController: UIViewController {
     }
     // MARK: - Properties
     // dedicated for model
-    private var stories: [NewsStroy] = [
-        NewsStroy(
-            category: "tech",
-            datetime: 123,
-            headline: "headline",
-            id: 0,
-            image: "",
-            related: "related",
-            source: "APPL",
-            summary: "summary",
-            url: ""
-        )
-    ]
+    private var stories: [NewsStroy] = []
     
     private let controllerType: ControllerType
     
@@ -85,7 +73,17 @@ private extension NewsViewController {
     }
     
     private func fetchNews() {
-        
+        APIManager.shared.news(for: controllerType) { [weak self] result in
+            switch result {
+            case .success(let stories):
+                DispatchQueue.main.async {
+                    self?.stories = stories
+                    self?.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     private func open(url: URL) {
