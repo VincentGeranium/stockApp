@@ -11,7 +11,7 @@ import FloatingPanel
 
 class WatchListViewController: UIViewController {
     // Model objcet
-    private var watchList: [String: [String]] = [:]
+    private var watchList: [String: [CandleStick]] = [:]
     
     // ViewModel
     private var viewModels: [String] = []
@@ -31,7 +31,7 @@ class WatchListViewController: UIViewController {
         self.view.backgroundColor = .systemBackground
         setupSearchController()
         setupTableView()
-        setupWatchListData()
+        fetchWatchListData()
         setupTitleView()
         setupFloatingPanel()
     }
@@ -39,16 +39,33 @@ class WatchListViewController: UIViewController {
 
 // MARK: - Private
 extension WatchListViewController {
-    private func setupWatchListData() {
+    private func fetchWatchListData() {
         // Array of symbols
         let symbolDatas = PersistenceManager.shared.watchList
         
+        let group = DispatchGroup()
+        
         for symbol in symbolDatas {
-            // Fetch Market Data per symbol
-            watchList[symbol] = ["some string"]
+            group.enter()
+            
+            APIManager.shared.marketData(for: symbol) { [weak self] result in
+                defer {
+                    group.leave()
+                }
+                
+                switch result {
+                case .success(let data):
+                    let candleSticks = data.candleSticks
+                    self?.watchList[symbol] = candleSticks
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }
         
-        tableView.reloadData()
+        group.notify(queue: .main) { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
     
     private func setupTableView() {
