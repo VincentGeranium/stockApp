@@ -25,4 +25,8 @@ class StockChartView: UIView {
     func reset() {
         
     }
+    
+    func configure(with viewModel: StockChartView) {
+        
+    }
 }

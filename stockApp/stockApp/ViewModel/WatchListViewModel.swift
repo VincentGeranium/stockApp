@@ -15,5 +15,5 @@ struct WatchListViewModel {
     let price: String // formatted
     let changeColor: UIColor // red or green
     let changePercentage: String // formatted
-//        let chartViewModel: StockChartView.ViewModel
+    let chartViewModel: StockChartViewModel
 }
