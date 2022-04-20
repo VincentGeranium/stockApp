@@ -14,7 +14,7 @@ class WatchListViewController: UIViewController {
     private var watchList: [String: [CandleStick]] = [:]
     
     // ViewModel
-    private var viewModels: [String] = []
+    private var viewModels: [WatchListViewModel] = []
     
     private let tableView: UITableView = {
         let tableView: UITableView = UITableView()
@@ -64,8 +64,52 @@ extension WatchListViewController {
         }
         
         group.notify(queue: .main) { [weak self] in
+            self?.createViewModel()
             self?.tableView.reloadData()
         }
+    }
+    
+    private func createViewModel() {
+        var viewModels: [WatchListViewModel] = []
+        for (symbol, candleSticks) in watchList {
+            let chagePercentage = getChangePercentage(symbol: symbol, data: candleSticks)
+            
+            viewModels.append(
+                .init(
+                    symbol: symbol,
+                    companyName: UserDefaults.standard.string(forKey: symbol) ?? "Company",
+                    price: getLatestClosingPrice(from: candleSticks),
+                    changeColor: chagePercentage < 0 ? .systemRed : .systemGreen,
+                    changePercentage: .percentage(from: chagePercentage)
+                )
+            )
+        }
+        
+//        print("\n\n\(viewModels)\n\n")
+        
+        self.viewModels = viewModels
+    }
+    
+    private func getChangePercentage(symbol: String, data:[CandleStick]) -> Double {
+        let latestDate = data[0].date
+        
+        guard let latestClose = data.first?.close,
+              let priorClose = data.first(where: { !Calendar.current.isDate($0.date, inSameDayAs: latestDate )})?.close
+        else { return 0.0 }
+        
+        let diff = 1 - (priorClose/latestClose)
+        
+//        print("\(symbol): \(diff)%")
+        
+        return diff
+    }
+    
+    private func getLatestClosingPrice(from data: [CandleStick]) -> String {
+        guard let closingPrice = data.first?.close else {
+            return ""
+        }
+        
+        return .formatted(number: closingPrice)
     }
     
     private func setupTableView() {

@@ -12,7 +12,7 @@ final class PersistenceManager {
     
     // MARK: - Private
     // saving data using from UserDefaults
-    private let  userDefaults: UserDefaults = .standard
+    private let userDefaults: UserDefaults = .standard
 
     
     private init() {}
@@ -51,12 +51,10 @@ private extension PersistenceManager {
     
     private func setupDefaults() {
         let defaultsValues: [String: String] = [
-            "APPL": "Apple Inc.",
             "MSFT": "Microsoft Corporation.",
             "SNAP": "Snap Inc.",
             "GOOG": "Alphabet.",
             "AMZN": "Amazon.com, Inc.",
-            "WORK": "Slack Technologies.",
             "FB": "Meta Plaforms, Inc.",
             "NVDA": "NVIDA Corporation.",
             "NKE": "NIKE.",

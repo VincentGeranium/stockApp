@@ -38,14 +38,7 @@ class NewsHeaderView: UITableViewHeaderFooterView {
         
         return button
     }()
-    
-    // MARK: - ViewModel
-    // ViewModel help for configure particular view.
-    struct ViewModel {
-        let title: String
-        let shouldShowAddButton: Bool
-    }
-    
+
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .secondarySystemBackground
@@ -67,7 +60,7 @@ class NewsHeaderView: UITableViewHeaderFooterView {
         label.text = nil
     }
     
-    public func configure(with viewModel: ViewModel) {
+    public func configure(with viewModel: NewsHeaderViewModel) {
         label.text = viewModel.title
         button.isHidden = !viewModel.shouldShowAddButton
     }

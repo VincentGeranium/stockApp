@@ -12,7 +12,6 @@ struct SearchResponse: Codable {
     let result: [SearchResult]
 }
 
-
 struct SearchResult: Codable {
     let description: String
     let displaySymbol: String

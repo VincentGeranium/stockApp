@@ -10,21 +10,6 @@ import UIKit
 import SDWebImage
 
 class NewsStoryTableViewCell: UITableViewCell {
-    struct ViewModel {
-        let source: String
-        let headline: String
-        let dateString: String
-        let imageUrl: URL?
-        
-        // Important business logic :  ViewModel from the Model
-        // ViewModel will be a drive the object from the Model
-        init(model: NewsStroy) {
-            self.source = model.source
-            self.headline = model.headline
-            self.dateString = .string(form: model.datetime)
-            self.imageUrl = URL(string: model.image)
-        }
-    }
     
     // Source
     let sourceLabel: UILabel = {
@@ -126,7 +111,7 @@ class NewsStoryTableViewCell: UITableViewCell {
     }
     
     // MARK: - Public
-    public func configure(viewModel: ViewModel) {
+    public func configure(viewModel: NewsStoryViewModel) {
         sourceLabel.text = viewModel.source
         headLineLabel.text = viewModel.headline
         dateLabel.text = viewModel.dateString
