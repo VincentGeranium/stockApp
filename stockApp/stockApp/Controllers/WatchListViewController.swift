@@ -46,6 +46,7 @@ class WatchListViewController: UIViewController {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
+    
 }
 
 // MARK: - Private
@@ -95,7 +96,7 @@ extension WatchListViewController {
     private func createViewModel() {
         var viewModels: [WatchListViewModel] = []
         for (symbol, candleSticks) in watchList {
-            let chagePercentage = getChangePercentage(symbol: symbol, data: candleSticks)
+            let chagePercentage = ChangePercentageManager.shared.getChangePercentage(symbol: symbol, data: candleSticks)
             
             viewModels.append(
                 .init(
@@ -107,7 +108,8 @@ extension WatchListViewController {
                     chartViewModel: .init(
                         data: candleSticks.reversed().map({ $0.close }),
                         showLegend: false,
-                        showAxis: false
+                        showAxis: false,
+                        fillColor: chagePercentage < 0 ? .systemRed : .systemGreen
                     )
                 )
             )
@@ -118,19 +120,19 @@ extension WatchListViewController {
         self.viewModels = viewModels
     }
     
-    private func getChangePercentage(symbol: String, data:[CandleStick]) -> Double {
-        let latestDate = data[0].date
-        
-        guard let latestClose = data.first?.close,
-              let priorClose = data.first(where: { !Calendar.current.isDate($0.date, inSameDayAs: latestDate )})?.close
-        else { return 0.0 }
-        
-        let diff = 1 - (priorClose/latestClose)
-        
-//        print("\(symbol): \(diff)%")
-        
-        return diff
-    }
+//    private func getChangePercentage(symbol: String, data:[CandleStick]) -> Double {
+//        let latestDate = data[0].date
+//
+//        guard let latestClose = data.first?.close,
+//              let priorClose = data.first(where: { !Calendar.current.isDate($0.date, inSameDayAs: latestDate )})?.close
+//        else { return 0.0 }
+//
+//        let diff = 1 - (priorClose/latestClose)
+//
+////        print("\(symbol): \(diff)%")
+//
+//        return diff
+//    }
     
     private func getLatestClosingPrice(from data: [CandleStick]) -> String {
         guard let closingPrice = data.first?.close else {

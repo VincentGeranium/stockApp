@@ -153,7 +153,7 @@ extension StockDetailViewController {
         )
         
         // Configure
-        
+        let change = ChangePercentageManager.shared.getChangePercentage(symbol: symbol, data: candleStickData)
         
         var viewModels: [MetricViewModel] = []
         
@@ -169,7 +169,8 @@ extension StockDetailViewController {
             chartViewModel: .init(
                 data: candleStickData.reversed().map({ $0.close }),
                 showLegend: true,
-                showAxis: true
+                showAxis: true,
+                fillColor: change < 0 ? .systemRed : .systemGreen
             ),
             metricViewModels: viewModels
         )
