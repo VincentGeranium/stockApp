@@ -52,6 +52,7 @@ class StockDetailHeaderView: UIView {
     
     func configure(chartViewModel: StockChartViewModel, metricViewModels: [MetricViewModel]) {
         // Update Chart
+        chartView.configure(with: chartViewModel)
         
         self.metricViewModels = metricViewModels
         collectionView.reloadData()
