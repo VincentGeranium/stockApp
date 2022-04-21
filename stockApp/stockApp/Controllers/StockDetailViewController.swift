@@ -15,6 +15,7 @@ class StockDetailViewController: UIViewController {
     private let companyName: String
     private var candleStickData: [CandleStick]
     private var stories: [NewsStroy] = []
+    private var metrics: Metrics?
     
     let tableView: UITableView = {
         let tableView: UITableView = UITableView()
@@ -103,7 +104,7 @@ extension StockDetailViewController {
             switch result {
             case .success(let response):
                 let metrics = response.metric
-                print(metrics)
+                self?.metrics = metrics
             case .failure(let error):
                 print(error)
             }
@@ -138,8 +139,31 @@ extension StockDetailViewController {
                 height: (view.width * 0.7) + 100
             )
         )
+        
         headerView.backgroundColor = .link
+        
         // Configure
+        
+        
+        var viewModels: [MetricViewModel] = []
+        
+        if let metrics = metrics {
+            viewModels.append(.init(name: "52W High", value: "\(metrics.annualWeekHigh)"))
+            viewModels.append(.init(name: "52W Low", value: "\(metrics.annualWeekLow)"))
+            viewModels.append(.init(name: "52W Return", value: "\(metrics.annualWeekPriceReturnDaily)"))
+            viewModels.append(.init(name: "Beta", value: "\(metrics.beta)"))
+            viewModels.append(.init(name: "10D Vol.", value: "\(metrics.tenDayAverageTradingVolume)"))
+        }
+        
+        headerView.configure(
+            chartViewModel: .init(
+                data: [],
+                showLegend: false,
+                showAxis: false
+            ),
+            metricViewModels: viewModels
+        )
+        
         tableView.tableHeaderView = headerView
     }
 }
