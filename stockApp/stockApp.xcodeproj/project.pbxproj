@@ -11,6 +11,8 @@
 		BF473B5E280A78230099ED59 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF473B5D280A78230099ED59 /* UIView+.swift */; };
 		BF473B60280A869F0099ED59 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF473B5F280A869F0099ED59 /* SearchResultTableViewCell.swift */; };
 		BF473B62280B73700099ED59 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF473B61280B73700099ED59 /* SearchResponse.swift */; };
+		BF51686228111BAB00ADA63F /* FinancialMetricsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51686128111BAB00ADA63F /* FinancialMetricsResponse.swift */; };
+		BF5168642811200100ADA63F /* StockDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5168632811200100ADA63F /* StockDetailHeaderView.swift */; };
 		BF51D342280A235F00D70000 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51D341280A235F00D70000 /* APIManager.swift */; };
 		BF51D344280A23A400D70000 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51D343280A23A400D70000 /* PersistenceManager.swift */; };
 		BF51D346280A23DD00D70000 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51D345280A23DD00D70000 /* HapticsManager.swift */; };
@@ -46,6 +48,8 @@
 		BF473B5D280A78230099ED59 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		BF473B5F280A869F0099ED59 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		BF473B61280B73700099ED59 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		BF51686128111BAB00ADA63F /* FinancialMetricsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialMetricsResponse.swift; sourceTree = "<group>"; };
+		BF5168632811200100ADA63F /* StockDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailHeaderView.swift; sourceTree = "<group>"; };
 		BF51D341280A235F00D70000 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BF51D343280A23A400D70000 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		BF51D345280A23DD00D70000 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				BF473B61280B73700099ED59 /* SearchResponse.swift */,
 				BFA7D083280D33CB000EE185 /* NewsStory.swift */,
 				BFC702AB280E95EB00E9B85B /* MarketDataResponse.swift */,
+				BF51686128111BAB00ADA63F /* FinancialMetricsResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 				BF3DF704280D47D100F0D862 /* NewsStoryTableViewCell.swift */,
 				BFD66103280F9D9A0030F078 /* WatchListTableViewCell.swift */,
 				BFD66105280FA0230030F078 /* StockChartView.swift */,
+				BF5168632811200100ADA63F /* StockDetailHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -334,6 +340,7 @@
 				BFD66104280F9D9A0030F078 /* WatchListTableViewCell.swift in Sources */,
 				BF473B60280A869F0099ED59 /* SearchResultTableViewCell.swift in Sources */,
 				BFCCA8B028094537004D2CE1 /* StockDetailViewController.swift in Sources */,
+				BF5168642811200100ADA63F /* StockDetailHeaderView.swift in Sources */,
 				BFCCA891280942D3004D2CE1 /* AppDelegate.swift in Sources */,
 				BFCCA8AC280944BC004D2CE1 /* NewsViewController.swift in Sources */,
 				BFD66108280FA4BC0030F078 /* WatchListViewModel.swift in Sources */,
@@ -350,6 +357,7 @@
 				BF8E6892280D2753005938E1 /* NewsHeaderView.swift in Sources */,
 				BFCCA893280942D3004D2CE1 /* SceneDelegate.swift in Sources */,
 				BFB12BE8280E40F20043EA4F /* String+.swift in Sources */,
+				BF51686228111BAB00ADA63F /* FinancialMetricsResponse.swift in Sources */,
 				BFB12BEA280E42230043EA4F /* UIImageView+.swift in Sources */,
 				BFD6610C280FABBC0030F078 /* NewsHeaderViewModel.swift in Sources */,
 				BFC702AC280E95EB00E9B85B /* MarketDataResponse.swift in Sources */,

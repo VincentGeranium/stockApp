@@ -87,10 +87,31 @@ extension StockDetailViewController {
     }
     
     private func fetchFinancialData() {
+        let group = DispatchGroup()
+        
         // Fetch Candle sticks if needed
+        if candleStickData.isEmpty {
+            group.enter()
+        }
         
         // Fetch financial metrics
-        renderChart()
+        group.enter()
+        APIManager.shared.financialMetrics(for: symbol) { [weak self] result in
+            defer {
+                group.leave()
+            }
+            switch result {
+            case .success(let response):
+                let metrics = response.metric
+                print(metrics)
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        group.notify(queue: .main) { [weak self] in
+            self?.renderChart()
+        }
     }
     
     private func fetchNews() {
@@ -108,7 +129,18 @@ extension StockDetailViewController {
     }
     
     private func renderChart() {
-        
+        // Chart ViewModel | Collection of FinancialMetricViewModel(s)
+        let headerView = StockDetailHeaderView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: view.width,
+                height: (view.width * 0.7) + 100
+            )
+        )
+        headerView.backgroundColor = .link
+        // Configure
+        tableView.tableHeaderView = headerView
     }
 }
 
