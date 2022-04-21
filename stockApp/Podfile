@@ -8,4 +8,5 @@ target 'stockApp' do
   # Pods for stockApp
 	pod 'FloatingPanel'
 	pod 'SDWebImage', '~> 5.0'
+	pod 'Charts'
 end
