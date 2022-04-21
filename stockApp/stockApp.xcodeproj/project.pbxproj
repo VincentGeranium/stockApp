@@ -14,6 +14,7 @@
 		BF51D342280A235F00D70000 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51D341280A235F00D70000 /* APIManager.swift */; };
 		BF51D344280A23A400D70000 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51D343280A23A400D70000 /* PersistenceManager.swift */; };
 		BF51D346280A23DD00D70000 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51D345280A23DD00D70000 /* HapticsManager.swift */; };
+		BF7D26D22810E9F0006AF6C6 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7D26D12810E9F0006AF6C6 /* Notification+.swift */; };
 		BF8E6892280D2753005938E1 /* NewsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E6891280D2753005938E1 /* NewsHeaderView.swift */; };
 		BFA7D084280D33CB000EE185 /* NewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA7D083280D33CB000EE185 /* NewsStory.swift */; };
 		BFA7D086280D3724000EE185 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA7D085280D3724000EE185 /* DateFormatter+.swift */; };
@@ -48,6 +49,7 @@
 		BF51D341280A235F00D70000 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BF51D343280A23A400D70000 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		BF51D345280A23DD00D70000 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		BF7D26D12810E9F0006AF6C6 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
 		BF8E6891280D2753005938E1 /* NewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderView.swift; sourceTree = "<group>"; };
 		BFA7D083280D33CB000EE185 /* NewsStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStory.swift; sourceTree = "<group>"; };
 		BFA7D085280D3724000EE185 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				BFB12BE7280E40F20043EA4F /* String+.swift */,
 				BFB12BE9280E42230043EA4F /* UIImageView+.swift */,
 				BFD6610F280FCDFF0030F078 /* NumberFormatter+.swift */,
+				BF7D26D12810E9F0006AF6C6 /* Notification+.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				BFA7D084280D33CB000EE185 /* NewsStory.swift in Sources */,
 				BF51D344280A23A400D70000 /* PersistenceManager.swift in Sources */,
 				BF3DF705280D47D100F0D862 /* NewsStoryTableViewCell.swift in Sources */,
+				BF7D26D22810E9F0006AF6C6 /* Notification+.swift in Sources */,
 				BFCCA8AA28094468004D2CE1 /* WatchListViewController.swift in Sources */,
 				BFABD4F92810132E009DB1DC /* StockChartViewModel.swift in Sources */,
 				BFD66110280FCDFF0030F078 /* NumberFormatter+.swift in Sources */,

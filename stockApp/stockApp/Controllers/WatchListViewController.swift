@@ -29,6 +29,8 @@ class WatchListViewController: UIViewController {
     
     private var panel: FloatingPanelController?
     
+    private var observer: NSObjectProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
@@ -37,6 +39,7 @@ class WatchListViewController: UIViewController {
         fetchWatchListData()
         setupTitleView()
         setupFloatingPanel()
+        setupObserver()
     }
     
     override func viewDidLayoutSubviews() {
@@ -47,13 +50,25 @@ class WatchListViewController: UIViewController {
 
 // MARK: - Private
 extension WatchListViewController {
+    private func setupObserver() {
+        observer = NotificationCenter.default.addObserver(
+            forName: .didAddToWatchList,
+            object: nil,
+            queue: .main,
+            using: { [weak self] _ in
+                self?.viewModels.removeAll()
+                self?.fetchWatchListData()
+            }
+        )
+    }
+    
     private func fetchWatchListData() {
         // Array of symbols
         let symbolDatas = PersistenceManager.shared.watchList
         
         let group = DispatchGroup()
         
-        for symbol in symbolDatas {
+        for symbol in symbolDatas where watchList[symbol] == nil {
             group.enter()
             
             APIManager.shared.marketData(for: symbol) { [weak self] result in

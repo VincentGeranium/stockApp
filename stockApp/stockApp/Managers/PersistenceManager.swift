@@ -26,8 +26,13 @@ final class PersistenceManager {
         return userDefaults.stringArray(forKey: Constant.watchListKey) ?? []
     }
     
-    public func addToWatchList() {
+    public func addToWatchList(symbol: String, companyName: String) {
+        var current = watchList
+        current.append(symbol)
+        userDefaults.set(current, forKey: Constant.watchListKey)
+        userDefaults.set(companyName, forKey: symbol)
         
+        NotificationCenter.default.post(name: .didAddToWatchList, object: nil)
     }
     
     public func removeFromWatchList(symbol: String) {
