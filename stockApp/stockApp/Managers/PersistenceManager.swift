@@ -35,6 +35,10 @@ final class PersistenceManager {
         NotificationCenter.default.post(name: .didAddToWatchList, object: nil)
     }
     
+    public func watchlistContains(symbol: String) -> Bool{
+        return watchList.contains(symbol)
+    }
+    
     public func removeFromWatchList(symbol: String) {
         // new colllection of symbols
         var newList: [String] = []
